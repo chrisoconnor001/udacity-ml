@@ -13263,6 +13263,10 @@ Think about the pros and cons of adding more training points based on if the tra
 <p>At max_depth=6, the training score is near perfect, and the testing score is at a respectable 0.8; we may find this may be our best model.</p>
 <p>After this point, it looks as if more complex decision trees lead to hiher variance. C.f. max_depth=10, where the training score is almost 100% accurate, but the testing score suffers drastically, due to overfitting.</p>
 <p>I/r/t training points: having more training points may not be of much benefit, as the curves start leveling out around 250 training points. Adding more points would simply show more of the same &amp; add to the amount of time it takes to compute.</p>
+<blockquote><p>What happens to the score of the training curve as more training points are added? What about the testing curve?</p>
+</blockquote>
+<p>The score of the training curve decreases as more testing points are added.
+The score of the training curve increases as more testing points are added.</p>
 
 </div>
 </div>
@@ -13853,9 +13857,11 @@ kcBQ0hMRkcBQ0hMRkcBQ0hMRkcD4H+qCR6LzDoYSAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>The k-fold cross-validation training technique allows us to train and test on all given data points.</p>
-<p>'k' stands for the number of "buckets" into which we separate our data. I.e., if we have 100 data points and k = 10, there will be 10 data points in each bucket. After these buckets are created, the k-fold technique assigns some percentage of these buckets as testing data (say, 20%), another percentage of these buckets as training data (80%), evaluates this data, and presents a score. Once that completes, the buckets are moved around - placing different buckets in the 80% training set &amp; 20% testing set - and the model is run again. This process continues until all buckets have been used in training and testing sets.</p>
-<p>After completion of this process, the scores are averaged, and we are presented with a score which shows how the model works when considering all given data points. (Compare this with a simple train/test split, which only evaluates one hardset train/test set.)</p>
-<p>Using k-fold cross-validation in conjunction with grid search is a great way to find the best value: we exhaustively evaluate all plausible hyperparameters via k-fold, and then see which hyperparameter presents us with the best score via grid search.</p>
+<p>'k' stands for the number of "buckets" into which we separate our data. (I.e., if we have 100 data points and k = 10, there will be 10 data points in each bucket.)</p>
+<p>After these buckets are created, the k-fold technique assigns a user-defined x number of buckets as training data, and k-x buckets as testing data. The algorithm trains &amp; tests on this data &amp; presents a score. Once that completes, the buckets are moved around - placing different buckets in the training set &amp; testing set - and the model is run again. This process continues until all buckets have been used k times.</p>
+<p>After completion of this process, the scores are averaged, and we are presented with a score which shows how the model works when considering all given data points.</p>
+<p>Compare this with a simple train/test split, which only evaluates a single train/test set. If we only tune the model with one train/test split, and the training subset does a poor job of representing the dataset as a whole, it is likely that the testing scores will always be low. Rotating the data ensures that we will evaluate all the data in both a training and a testing capacity &amp; give the algorithm its best shot at making an accurate prediction.</p>
+<p>Using k-fold cross-validation in conjunction with grid search is important when tuning a model. We exhaustively evaluate all plausible hyperparameters via k-fold, and then see which hyperparameter presents us with the best score via grid search.</p>
 
 </div>
 </div>
