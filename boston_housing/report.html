@@ -13823,7 +13823,7 @@ kcBQ0hMRkcBQ0hMRkcBQ0hMRkcD4H+qCR6LzDoYSAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>The grid search technique is a method by which we can discern which hyperparameters work best for our purposes. In order to use this technique, we train and test our model with a "exhaustively generated" grid of parameter values, note their scores, and select which model is best, based on those scores.</p>
+<p>The grid search technique is a method by which we can discern which hyperparameters work best for our purposes. In order to use this technique, we train and test our model with a "exhaustively generated" grid of parameter values, note their scores, and select which hyperparameter is best, based on those scores.</p>
 <p>For our purposes, we could run our model using different max_depth values, note the results, and select the max_depth which returned the best results.</p>
 
 </div>
@@ -13853,8 +13853,8 @@ kcBQ0hMRkcBQ0hMRkcBQ0hMRkcD4H+qCR6LzDoYSAAAAAElFTkSuQmCC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>The k-fold cross-validation training technique allows us to train and test on all given data points.</p>
-<p>'k' stands for the number of "buckets" into which we separate our data. I.e., if we have 100 data points and k = 10, there will be 10 data points in each bucket. After these buckets are created, the k-fold technique assigns some percentage of these buckets as testing data (say, 20%), another percentage of these buckets as training data (80%), evaluates this data, and presents a score. Once that completes, the buckets are moved around - placing different buckets in the training set &amp; testing set - and the model is run again. This process continues until all buckets have been used in training and testing sets.</p>
-<p>After completion of this process, the scores are averaged, and we are presented with a score which shows how the model works when considering all given data points. (Compare this with a simple train/test split, which only does one evaluation with a specific dataset.)</p>
+<p>'k' stands for the number of "buckets" into which we separate our data. I.e., if we have 100 data points and k = 10, there will be 10 data points in each bucket. After these buckets are created, the k-fold technique assigns some percentage of these buckets as testing data (say, 20%), another percentage of these buckets as training data (80%), evaluates this data, and presents a score. Once that completes, the buckets are moved around - placing different buckets in the 80% training set &amp; 20% testing set - and the model is run again. This process continues until all buckets have been used in training and testing sets.</p>
+<p>After completion of this process, the scores are averaged, and we are presented with a score which shows how the model works when considering all given data points. (Compare this with a simple train/test split, which only evaluates one hardset train/test set.)</p>
 <p>Using k-fold cross-validation in conjunction with grid search is a great way to find the best value: we exhaustively evaluate all plausible hyperparameters via k-fold, and then see which hyperparameter presents us with the best score via grid search.</p>
 
 </div>
